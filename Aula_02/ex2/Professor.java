@@ -4,6 +4,16 @@ public class Professor {
 	String nome,titulacao;
 	int totalDeAulas;
 	double valorHoraAula;
+	
+	
+	public Professor(String nome,String titulacao,double valorHoraAula,int totalDeAulas) {
+		this.nome = nome;
+		this.titulacao = titulacao;
+		this.valorHoraAula = valorHoraAula;
+		this.totalDeAulas = totalDeAulas;
+	}
+	
+	public Professor() {} //construtor sem parametros
     
 	public double calcularSalario() {
         double sb = totalDeAulas*valorHoraAula*4.5;
