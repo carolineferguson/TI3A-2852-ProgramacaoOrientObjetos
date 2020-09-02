@@ -25,12 +25,7 @@ public class Conta {
 		public String retornarDados() {
 			return numero + "\n" + saldo + "\n" + limite;
 		}
-		public String gerarExtrato() {
-			return "Extrato" + numero;
-		}
-		public String gerarExtrato(int dias) {
-			return "Extrato" + numero;
-		}
+		
 		public void  transferir(Conta origem,Conta destino,double valor) {
 			//destino.saldo += valor;
 			//this.saldo -= valor;
