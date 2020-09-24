@@ -15,19 +15,19 @@ public class Admin {
 		
 	}
 	
-	public BilheteUnico emitirBilhete(Usuario usuario) {
-		int max = 9999;
+	public BilheteUnico emitirBilhete(Usuario usuario) { //criar um vetor de bilhetes
+		int max = 9999;									//loop com condição para que o numero do bilhete não seja igual a um ja existente dentro do vetor
 		int min = 1000;
 		int numero = random.nextInt((max-min)+1)+min;
 		return new BilheteUnico(numero,usuario,0);
 	}
 	
 	public String imprimirBilhete() {
-		return u1 +"\n"+ u2; //VETOR
+		return u1 +"\n"+ u2; // trazer todo o vetor criado no main
 	}
 	
 	public Usuario consultarBilhete(String cpf) {
-		if(u1.getCpf().equals(cpf)) { //VETOR
+		if(u1.getCpf().equals(cpf)) { // loop dentro do vetor para encontrar o usuario pelo cpf 
 			return u1;
 		}
 		
