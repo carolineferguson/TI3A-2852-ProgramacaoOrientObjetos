@@ -1,9 +1,8 @@
 package br.espm.admin;
 import br.espm.bilhete.BilheteUnico;
-import br.espm.tipo.TipoDeUsuario;
 import br.espm.usuario.Usuario;
 import java.util.Random;
-import Main.Main;
+
 
 
 public class Admin {
@@ -14,7 +13,7 @@ public class Admin {
 	}
 	
 	public BilheteUnico emitirBilhete(Usuario usuario) { 
-		int max = 9999;									//loop com condição para que o numero do bilhete não seja igual a um ja existente dentro do vetor
+		int max = 9999;									 
 		int min = 1000;
 		int numero = random.nextInt((max-min)+1)+min;
 		return new BilheteUnico(numero,usuario,0);
@@ -31,5 +30,7 @@ public class Admin {
 	public String consultarBilhete(BilheteUnico bilhete) {
 		return bilhete.getDados();
 	}
+	
+
 
 }

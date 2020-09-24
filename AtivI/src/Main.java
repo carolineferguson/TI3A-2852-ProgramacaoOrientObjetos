@@ -30,6 +30,7 @@ public class Main {
 			else {
 				JOptionPane.showMessageDialog(null,"Tipo de usuario inexistente");
 			}
+			JOptionPane.showMessageDialog(null,usuario[i].getDados());
 			
 			}
 		
@@ -57,16 +58,27 @@ public class Main {
 			String op = JOptionPane.showInputDialog(var); //segunda janela grafica
 				if(op.equals("1")) {
 					int id = Integer.parseInt(JOptionPane.showInputDialog("Qual id do usuario?")); //O Id do usuario é a posição dele no vetor
-					admin.emitirBilhete(usuario[id]);
+					BilheteUnico novo_bilhete = admin.emitirBilhete(usuario[id]);
+					JOptionPane.showMessageDialog(null,novo_bilhete.getDados());
 				}
 				else if(op.equals("2")) {
-					System.out.println(admin.imprimirBilhete(bilhetes));
+					JOptionPane.showMessageDialog(null,admin.imprimirBilhete(bilhetes));
 				}
 				else if(op.equals("3")) {
-					admin.consultarBilhete(bilhete_aux);
+					String cpf = JOptionPane.showInputDialog("Qual cpf do usuario?");
+					BilheteUnico bilhete_consultar = null ;         
+					for(int i = 0;i<usuario.length;i++) {	
+						if(usuario[i].getCpf().equals(cpf)) { 
+							if(usuario[i].equals(bilhetes[i].getUsuario())) { 
+								bilhete_consultar = bilhetes[i]; 
+							}
+						}
+						
+					}
+					JOptionPane.showMessageDialog(null,admin.consultarBilhete(bilhete_consultar));
 				}
 				
-				else if(op.equals("4")) { //MUDAR
+				else if(op.equals("4")) { //SAIR
 				
 				}
 		}
@@ -84,12 +96,14 @@ public class Main {
 				if(op2.equals("1")) {
 					double valor = Double.parseDouble(JOptionPane.showInputDialog("Valor:"));
 					bilhete_aux.carregarBilhete(valor);
+					JOptionPane.showMessageDialog(null,bilhete_aux.getDados());
 				}
 				else if(op2.equals("2")) {
 					bilhete_aux.passarNaCatraca();
+					JOptionPane.showMessageDialog(null,bilhete_aux.getDados());
 				}
 				else if(op2.equals("3")) {
-					bilhete_aux.getDados();
+					JOptionPane.showMessageDialog(null,bilhete_aux.getDados());
 				}
 		}
 		
