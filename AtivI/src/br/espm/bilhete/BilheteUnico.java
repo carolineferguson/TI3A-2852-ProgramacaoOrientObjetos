@@ -15,7 +15,7 @@ public class BilheteUnico {
 	}
 	
 	public String getDados() {
-		return "Numero:" + numero +"\n"+"Usuario:"+usuario +"\n"+"Saldo:"+ saldo;
+		return "Numero:" + numero +"\n"+"Usuario -> "+usuario.getDados() +"\n"+"Saldo:"+ saldo;
 	}
 	
 	public void passarNaCatraca() {

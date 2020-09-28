@@ -13,7 +13,7 @@ public class Usuario {
 	}
 	
 	public String getDados() {
-		return "Nome:" + nome +"\n"+"CPF:"+getCpf() + "Tipo:" + tipo;
+		return "Nome:" + nome +"\n"+"CPF:"+getCpf() + "\n"+"Tipo:" + tipo;
 	}
 
 	public String getCpf() {
