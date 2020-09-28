@@ -1,6 +1,8 @@
 package br.espm.admin;
 import br.espm.bilhete.BilheteUnico;
 import br.espm.usuario.Usuario;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -19,10 +21,10 @@ public class Admin {
 		return new BilheteUnico(numero,usuario,0);
 	}
 	
-	public String imprimirBilhete(BilheteUnico bilhete[]) {
+	public String imprimirBilhete(ArrayList <BilheteUnico> bilhetes) {
 		String aux = "";
 		for(int i = 0;i<2;i++) {
-		aux = bilhete[i].getDados() + " "+aux;
+		aux = bilhetes.get(i).getDados() + " "+aux;
 		}
 		return aux;
 	}

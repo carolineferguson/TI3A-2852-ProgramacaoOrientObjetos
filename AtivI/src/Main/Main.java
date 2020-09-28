@@ -4,12 +4,13 @@ import br.espm.bilhete.*;
 import br.espm.tipo.*;
 import br.espm.usuario.Usuario;
 import br.espm.admin.Admin;
+import java.util.ArrayList;
 public class Main {
 	
 
 	public static void main(String[] args) {
 		Usuario[] usuario = new Usuario[2];
-		BilheteUnico[] bilhetes = new BilheteUnico[2];
+		ArrayList<BilheteUnico> bilhetes = new ArrayList();
 		Admin admin = new Admin();
 		final String senha = "admin"; 
 		
@@ -18,13 +19,13 @@ public class Main {
 			String nome  = JOptionPane.showInputDialog("Nome");
 			String cpf  = JOptionPane.showInputDialog("Cpf");
 			String tipo = JOptionPane.showInputDialog("Tipo:");
-			if(tipo.equals("ESTUDANTE")) {
+			if(tipo.equalsIgnoreCase("ESTUDANTE")) {
 				usuario[i]  = new Usuario(nome,cpf,TipoDeUsuario.ESTUDANTE);
 			}
-			else if(tipo.equals("PROFESSOR")){
+			else if(tipo.equalsIgnoreCase("PROFESSOR")){
 				usuario[i]  = new Usuario(nome,cpf,TipoDeUsuario.PROFESSOR);
 			}
-			else if(tipo.equals("NORMAL")) {
+			else if(tipo.equalsIgnoreCase("NORMAL")) {
 				usuario[i]  = new Usuario(nome,cpf,TipoDeUsuario.NORMAL);
 			}
 			else {
@@ -34,18 +35,12 @@ public class Main {
 			
 			}
 		
-		for(int i=0;i<usuario.length;i++) {
-			bilhetes[i] = admin.emitirBilhete(usuario[i]);
-		}
-		
-	
 		String aux = JOptionPane.showInputDialog("Senha ou CPF ou Sair"); //primeira janela grafica
-		
 		BilheteUnico bilhete_aux = null ;         
 		for(int i = 0;i<usuario.length;i++) {	
 			if(usuario[i].getCpf().equals(aux)) { //pegar o usuario dentro do vetor pelo cpf
-				if(usuario[i].equals(bilhetes[i].getUsuario())) { //pegar o bilhete unico pelo usuario
-					bilhete_aux = bilhetes[i]; 
+				if(usuario[i].equals(bilhetes.get(i).getUsuario())) { //pegar o bilhete unico pelo usuario
+					bilhete_aux = bilhetes.get(i); 
 				}
 			}
 			
@@ -57,9 +52,20 @@ public class Main {
 			String var = "1. Emitir bilhete" + "\n" + "2.Imprimir bilhete" + "\n" + "3.Consultar bilhete" + "\n" + "4.Sair";
 			String op = JOptionPane.showInputDialog(var); //segunda janela grafica
 				if(op.equals("1")) {
-					int id = Integer.parseInt(JOptionPane.showInputDialog("Qual id do usuario?")); //O Id do usuario é a posição dele no vetor
-					BilheteUnico novo_bilhete = admin.emitirBilhete(usuario[id]);
-					JOptionPane.showMessageDialog(null,novo_bilhete.getDados());
+					String cpf = JOptionPane.showInputDialog("Qual cpf do usuario?"); 
+					for(int i = 0;i<usuario.length;i++) {	
+						if(cpf.equals(usuario[i].getCpf())) { 
+							BilheteUnico novo_bilhete = admin.emitirBilhete(usuario[i]);
+							bilhetes.add(admin.emitirBilhete(usuario[i]));
+							JOptionPane.showMessageDialog(null,novo_bilhete.getDados());
+							break;
+						}
+						else {
+							JOptionPane.showMessageDialog(null,"Este usuario não esta no sistema");
+						}
+						
+					}
+					
 				}
 				else if(op.equals("2")) {
 					JOptionPane.showMessageDialog(null,admin.imprimirBilhete(bilhetes));
@@ -69,8 +75,8 @@ public class Main {
 					BilheteUnico bilhete_consultar = null ;         
 					for(int i = 0;i<usuario.length;i++) {	
 						if(usuario[i].getCpf().equals(cpf)) { 
-							if(usuario[i].equals(bilhetes[i].getUsuario())) { 
-								bilhete_consultar = bilhetes[i]; 
+							if(usuario[i].equals(bilhetes.get(i).getUsuario())) { 
+								bilhete_consultar = bilhetes.get(i); 
 							}
 						}
 						
@@ -84,7 +90,7 @@ public class Main {
 		}
 				
 		//se for a opção sair		
-		else if(aux.equals("Sair")) {
+		else if(aux.equalsIgnoreCase("Sair")) {
 			
 		}
 		//se for o usuario
