@@ -35,6 +35,10 @@ public class Main {
 			
 			}
 		
+		Usuario usuario_teste = new Usuario ("A","123",TipoDeUsuario.NORMAL); // Teste para que não seja necessario emitir o bilhete para testes
+		BilheteUnico bilhete_teste = new BilheteUnico(1,usuario_teste,0);
+		bilhetes.add(bilhete_teste);
+		
 		String aux = JOptionPane.showInputDialog("Senha ou CPF ou Sair"); //primeira janela grafica
 		BilheteUnico bilhete_aux = null ;         
 		for(int i = 0;i<usuario.length;i++) {	
@@ -67,18 +71,24 @@ public class Main {
 					}
 					
 				}
+				
+				
 				else if(op.equals("2")) {
-					JOptionPane.showMessageDialog(null,admin.imprimirBilhete(bilhetes));
+					JOptionPane.showMessageDialog(null,admin.imprimirBilhete(bilhetes)); 
 				}
 				else if(op.equals("3")) {
 					String cpf = JOptionPane.showInputDialog("Qual cpf do usuario?");
-					BilheteUnico bilhete_consultar = null ;         
+					BilheteUnico bilhete_consultar = null ;  
+					if (cpf.equals(usuario_teste.getCpf())) { //Para usar o bilhete de teste sem que o admin tenha emitido
+						bilhete_consultar = bilhete_teste;
+					}
 					for(int i = 0;i<usuario.length;i++) {	
 						if(usuario[i].getCpf().equals(cpf)) { 
 							if(usuario[i].equals(bilhetes.get(i).getUsuario())) { 
 								bilhete_consultar = bilhetes.get(i); 
-							}
+							}	
 						}
+						
 						
 					}
 					JOptionPane.showMessageDialog(null,admin.consultarBilhete(bilhete_consultar));
@@ -99,6 +109,9 @@ public class Main {
 			
 			String var2 = "1. Carregar bilhete" +"\n" + "2.Passar na catraca" + "\n" + "3.Consultar saldo" + "\n" + "4.Sair";
 			String op2 = JOptionPane.showInputDialog(var2); //segunda janela grafica
+			if(aux.equals(usuario_teste.getCpf())) {
+				bilhete_aux = bilhete_teste;
+			}
 				if(op2.equals("1")) {
 					double valor = Double.parseDouble(JOptionPane.showInputDialog("Valor:"));
 					bilhete_aux.carregarBilhete(valor);

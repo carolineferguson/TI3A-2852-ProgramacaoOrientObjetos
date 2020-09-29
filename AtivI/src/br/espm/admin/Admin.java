@@ -23,7 +23,7 @@ public class Admin {
 	
 	public String imprimirBilhete(ArrayList <BilheteUnico> bilhetes) {
 		String aux = "";
-		for(int i = 0;i<2;i++) {
+		for(int i = 0;i<bilhetes.size();i++) {
 		aux = bilhetes.get(i).getDados() + " "+aux;
 		}
 		return aux;
