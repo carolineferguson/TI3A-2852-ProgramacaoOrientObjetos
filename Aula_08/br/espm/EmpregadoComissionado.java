@@ -26,11 +26,11 @@ public class EmpregadoComissionado extends Empregado {
 	public void setComissao(double comissao) {
 		this.comissao = comissao;
 	}
-
+	@Override
 	public double calcularSalario() {
 		return totalDeVendas*comissao/100;
 	}
-	
+	@Override
 	public String toString() {
 		return "Matricula:"+matricula+" Nome:"+nome+" Salario:"+calcularSalario();
 	}

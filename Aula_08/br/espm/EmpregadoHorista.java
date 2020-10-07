@@ -26,10 +26,12 @@ public class EmpregadoHorista extends Empregado{
 	public void setValorDaHoraTrabalhada(double valorDaHoraTrabalhada) {
 		this.valorDaHoraTrabalhada = valorDaHoraTrabalhada;
 	}
+	@Override
 	public double calcularSalario() {
 		return totalDeHorasTrabalhadas*valorDaHoraTrabalhada;
 	}
 	
+	@Override
 	public String toString() {
 		return "Matricula:"+matricula+" Nome:"+nome+" Salario:"+calcularSalario();
 	}

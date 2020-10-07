@@ -8,6 +8,12 @@ public abstract class Empregado {
 		this.matricula = matricula;
 		this.nome = nome;
 	}
+	
+	public abstract double calcularSalario();
+	
+	public  String toString() {
+		return "Matricula:" + matricula+ " Nome:" +nome+ " Salario:";
+	}
 
 
 }
