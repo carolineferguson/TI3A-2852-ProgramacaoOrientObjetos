@@ -9,10 +9,11 @@ public class Main {
 		Empregado[] empregados = new Empregado[2];
 		empregados[0] = new EmpregadoComissionado(1,"A",50,100);
 		empregados[1] = new EmpregadoHorista(2,"B",5,10);
-		
-		for(int i = 0;i<empregados.length;i++) {
-			System.out.println(empregados[i].toString());
+			
+		for(Empregado e: empregados) {
+			System.out.println(e.toString());
 		}
 	}
 
 }
+
