@@ -7,6 +7,7 @@ public class Main {
 			static LinkedList<Reserva> lista_reserva = new LinkedList<Reserva>();
 			static LinkedList<Reserva> lista_espera = new LinkedList<Reserva>();
 			static LinkedList<String> lista_reservareg = new LinkedList<String>();
+			static LinkedList<String> lista_esperareg = new LinkedList<String>();
 	public static void main(String[] args) {
 		
 		try {
@@ -32,6 +33,9 @@ public class Main {
 		}
 		else if(aux == 4) {
 			imprimirEspera();
+		}
+		else if(aux==5) {
+			cancelarReserva();
 		}
 		return aux;
 	}
@@ -69,6 +73,7 @@ public class Main {
 		}
 		else {
 			lista_espera.add(r);
+			lista_esperareg.add(reg);
 		}
 		principal();
 
@@ -77,28 +82,57 @@ public class Main {
 	
 	public static void pesquisar() {
 		String aux_reg = JOptionPane.showInputDialog("CPF OU CNPJ:");
-		for(String reg: lista_reservareg) {
-			if(aux_reg.equals(reg)) {
-				JOptionPane.showMessageDialog(null, "Há reserva para esse cpf");
-				break;
+		if(lista_reservareg.contains(aux_reg)) {
+			JOptionPane.showMessageDialog(null, "Há reserva para esse cpf");
+				
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Não há reserva para esse cpf");
 			}
-		}
+		
 		principal();
 		}
 	public static void imprimirReservas() {
-		JOptionPane.showMessageDialog(null,lista_reserva);
+		String aux = " ";
+		for(Reserva reserva:lista_reserva) {
+			aux += "\n"+reserva.cliente.nome;
+		}
+		JOptionPane.showMessageDialog(null,aux);
 		principal();
 	}
 	public static void imprimirEspera() {
-		JOptionPane.showMessageDialog(null,lista_espera);
+		String aux = " ";
+		for(Reserva reserva:lista_espera) {
+			aux += "\n"+reserva.cliente.nome;
+		}
+		JOptionPane.showMessageDialog(null,aux);
 		principal();
 	}
 	public static void cancelarReserva() {
+		int cont = 0;
 		String reg = JOptionPane.showInputDialog("CPF ou CNPJ:");
+		if(lista_reservareg.contains(reg)) {
+			JOptionPane.showMessageDialog(null, "Há reserva para esse cpf");
 		
+		for(String re: lista_reservareg) {
+			if(reg.equals(re)) {
+				JOptionPane.showMessageDialog(null, "Há reserva para esse cpf");
+				lista_reserva.remove(cont);
+				lista_reservareg.remove(cont);
+				lista_reserva.addLast(lista_espera.element());
+				lista_espera.remove();
+				lista_esperareg.remove();
+				break;
+			}
+		}
+		}
+			else {
+				JOptionPane.showMessageDialog(null, "Não há reserva para esse cpf");
+			}
+			cont++;
+		
+		
+		principal();
 	}
 	
 

@@ -8,6 +8,7 @@ public class Reserva implements Pagamento {
 		this.pagamentoAVista = pagamentoAVista;
 	}
 
+
 	@Override
 	public String toString() {
 		if (cliente instanceof PessoaFisica) 
