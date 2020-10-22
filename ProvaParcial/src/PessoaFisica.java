@@ -11,6 +11,10 @@ public class PessoaFisica extends Cliente {
 	public String toString() {
 		return "cpf" + cpf + "nome:" + nome;
 	}
+
+	public String getCpf() {
+		return cpf;
+	}
 	
 	
 

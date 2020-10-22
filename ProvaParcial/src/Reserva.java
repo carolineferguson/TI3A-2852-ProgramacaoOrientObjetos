@@ -23,4 +23,6 @@ public class Reserva implements Pagamento {
 		else
 			return 3200;
 	}
+
+	
 }
