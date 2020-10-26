@@ -74,6 +74,7 @@ public class Main {
 		else {
 			lista_espera.add(r);
 			lista_esperareg.add(reg);
+			JOptionPane.showMessageDialog(null, "Esta reserva foi para a lista de espera");
 		}
 		principal();
 
@@ -83,11 +84,11 @@ public class Main {
 	public static void pesquisar() {
 		String aux_reg = JOptionPane.showInputDialog("CPF OU CNPJ:");
 		if(lista_reservareg.contains(aux_reg)) {
-			JOptionPane.showMessageDialog(null, "Há reserva para esse cpf");
+			JOptionPane.showMessageDialog(null, "Há reserva para esse cpf/cnpj");
 				
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Não há reserva para esse cpf");
+				JOptionPane.showMessageDialog(null, "Não há reserva para esse cpf/cnpj");
 			}
 		
 		principal();
@@ -95,15 +96,17 @@ public class Main {
 	public static void imprimirReservas() {
 		String aux = " ";
 		for(Reserva reserva:lista_reserva) {
-			aux += "\n"+reserva.cliente.nome;
+			aux += "\n"+reserva.toString(); 
 		}
 		JOptionPane.showMessageDialog(null,aux);
 		principal();
 	}
 	public static void imprimirEspera() {
 		String aux = " ";
+		int cont = 1;
 		for(Reserva reserva:lista_espera) {
-			aux += "\n"+reserva.cliente.nome;
+			aux += "\n"+cont+" "+reserva.toString();
+			cont++;
 		}
 		JOptionPane.showMessageDialog(null,aux);
 		principal();

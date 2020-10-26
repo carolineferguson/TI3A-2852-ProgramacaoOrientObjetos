@@ -11,11 +11,26 @@ public class Reserva implements Pagamento {
 
 	@Override
 	public String toString() {
-		if (cliente instanceof PessoaFisica) 
-			return "cliente:" + cliente + "Tipo: Fisica"+"pagamentoAVista:" + pagamentoAVista + "Valor:"+calcularPagamento();
-		else
-			return "cliente:" + cliente + "Tipo: Juridica"+ ", pagamentoAVista:" + pagamentoAVista+"Valor:"+calcularPagamento();
+		if (cliente instanceof PessoaFisica) {
+			if(pagamentoAVista) {
+			return "Cliente:" + cliente.nome + "Tipo: Fisica"+" Pagamento A Vista" + "Valor:"+calcularPagamento();
+			}
+			else {
+			return "Cliente:" + cliente.nome + "Tipo: Fisica"+"Pagamento Parcelado" + pagamentoAVista + "Valor:"+calcularPagamento();
+			}
+		}
+		else {
+			if(pagamentoAVista) {
+				return "Cliente:" + cliente.nome + "Tipo: Juridica "+" Pagamento A Vista"  + " Valor:"+calcularPagamento();
+			}
+			else {
+				return "Cliente:" + cliente.nome + "Tipo: Juridica"+" Pagamento Parcelado" +  " Valor:"+calcularPagamento();
+			}
+			
+		}
+			
 	}
+			
 	
 	
 	public double calcularPagamento() {
