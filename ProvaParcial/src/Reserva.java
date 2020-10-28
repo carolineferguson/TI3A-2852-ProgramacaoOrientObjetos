@@ -1,5 +1,5 @@
 
-public class Reserva implements Pagamento {
+public class Reserva {
 	Cliente cliente;
 	boolean pagamentoAVista;
 	
