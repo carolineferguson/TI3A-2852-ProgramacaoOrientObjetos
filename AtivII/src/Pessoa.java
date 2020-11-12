@@ -11,5 +11,9 @@ public class Pessoa {
 	public String toString() {
 		return nome + cpf;
 	}
+	
+	public String getCpf() {
+		return cpf;
+	}
 
 }
