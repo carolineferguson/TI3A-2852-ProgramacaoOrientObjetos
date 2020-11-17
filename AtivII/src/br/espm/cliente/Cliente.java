@@ -1,4 +1,8 @@
 
+package br.espm.cliente;
+
+import br.espm.pessoa.Pessoa;
+
 public class Cliente extends Pessoa {
 	private double valorDaDivida;
 
@@ -6,7 +10,5 @@ public class Cliente extends Pessoa {
 		super(nome, cpf);
 		this.valorDaDivida = valorDaDivida;
 	}
-	
-	
 
 }
