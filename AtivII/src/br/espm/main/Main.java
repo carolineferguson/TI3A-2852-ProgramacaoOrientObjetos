@@ -14,7 +14,16 @@ public class Main {
 			principal(dados);
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Digite uma opção numérica");
+			principal(dados);
 		}
+		catch (ArithmeticException e) {
+	        JOptionPane.showMessageDialog(null, e);
+	        principal(dados);
+	      }
+		catch (Exception e) {
+	        JOptionPane.showMessageDialog(null, e);
+	        principal(dados);
+	      }
 	}
 
 	public static void principal(ArrayList<Pessoa> dados) {
@@ -49,6 +58,7 @@ public class Main {
 			JOptionPane.showMessageDialog(null, "Número inválido");
 		}		
 	}
+	
 
 	public static void cadastrarEmpregado(ArrayList<Pessoa> dados) {
 		String tipo = JOptionPane.showInputDialog("Gerente ou Vendedor?");
@@ -86,6 +96,10 @@ public class Main {
 				}
 				break;
 			}
+			else {
+				JOptionPane.showMessageDialog(null,"Não há este cpf no registro");
+				break;
+			}
 		}
 		principal(dados);
 	}
@@ -120,6 +134,10 @@ public class Main {
 				if (confirm == JOptionPane.YES_OPTION) {
 					dados.remove(pessoa);
 				}
+				break;
+			}
+			else {
+				JOptionPane.showMessageDialog(null,"Não há este cpf no registro");
 				break;
 			}
 		}
