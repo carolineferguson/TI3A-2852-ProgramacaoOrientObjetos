@@ -43,4 +43,31 @@ public class SpotifyDAO {
 	  }
 	  return lista;
   }
+  
+  public void atualizar(String idspotify,String nome) {
+	  sql = "UPDATE musica SET nome = ? WHERE idspotify = ?";
+	  connection = new Conexao().conectar();
+	  try {
+		  ps = connection.prepareStatement(sql);
+		  ps.setString(1,nome);
+		  ps.setString(2,idspotify);
+		  ps.execute();
+	  }
+	  catch(SQLException e) {
+		  System.out.println("Erro ao atualizar o banco"+e);
+	  }
+  }
+  
+  public void deletar(String idspotify) {
+	  sql = "DELETE FROM musica where idspotify = ?";
+	  connection = new Conexao().conectar();
+	  try {
+		  ps = connection.prepareStatement(sql);
+		  ps.setString(1,idspotify);
+		  ps.execute();
+	  }
+	  catch(SQLException e) {
+		  System.out.println("Erro ao deletar no banco"+e);
+	  }
+  }
 }

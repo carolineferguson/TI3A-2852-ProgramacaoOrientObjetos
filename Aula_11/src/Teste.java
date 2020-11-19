@@ -10,10 +10,15 @@ public class Teste {
 		dao.inserir(ms);
 		dao.inserir(wr);
 		
+		dao.atualizar("4ctEt5qumxA8RuzdeQagkk","Would You Rather");
+		dao.deletar("4ctEt5qumxA8RuzdeQagkk");
+		
 		ArrayList<Musica> lista = dao.listar();
 		for(Musica musica : lista) {
 			System.out.println(musica.getNome()+" "+musica.getNomealbum());
 		}
+		
+		
 	}
 
 }
