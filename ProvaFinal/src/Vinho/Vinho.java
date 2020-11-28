@@ -6,9 +6,9 @@ public class Vinho {
 	String produto;
 	String casta;
 	int safra;
-	int pontuacao;
+	float pontuacao;
 	
-	public Vinho(int id, String cpf_cnpj, String produto, String casta, int safra, int pontuacao) {
+	public Vinho(int id, String cpf_cnpj, String produto, String casta, int safra, float pontuacao) {
 		this.id = id;
 		this.cpf_cnpj = cpf_cnpj;
 		this.produto = produto;
@@ -57,7 +57,7 @@ public class Vinho {
 		this.safra = safra;
 	}
 
-	public int getPontuacao() {
+	public float getPontuacao() {
 		return pontuacao;
 	}
 

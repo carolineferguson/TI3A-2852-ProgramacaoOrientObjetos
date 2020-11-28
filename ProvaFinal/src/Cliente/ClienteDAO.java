@@ -59,6 +59,24 @@ public class ClienteDAO {
 		  return lista;
 	  }
 	  
+	  public ArrayList<String>listarCpf(){
+		  ArrayList<String> lista = new ArrayList<String>();
+		  sql = "SELECT cpf_cnpj from java_cliente";
+		  connection = new Conexao().conectar();
+		  try {
+			  ps = connection.prepareStatement(sql);
+			  rs = ps.executeQuery();
+			  while(rs.next()) {
+				 lista.add(rs.getString("cpf_cnpj"));
+					  
+			  }
+		  }
+		  catch(SQLException e) {
+			  System.out.println("Erro ao listar os dados"+e);
+		  }
+		  return lista;
+	  }
+	  
 	
 	  
 	  

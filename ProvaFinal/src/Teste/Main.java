@@ -36,12 +36,12 @@ public class Main {
 	
 	public static void Login(ClienteDAO cliente_dao,VinhoDAO vinho_dao) {
 		String cpf_cnpj = JOptionPane.showInputDialog("CPF/CNPJ");
-		String senha = JOptionPane.showInputDialog("Senha:");
 		ArrayList<Cliente>lista = cliente_dao.listar();
 		for (Cliente e :lista) {
 			if (e instanceof Pessoa_Fisica) {
 				Pessoa_Fisica aux = (Pessoa_Fisica) e;
 				if(aux.getCpf().equals(cpf_cnpj)){
+					String senha = JOptionPane.showInputDialog("Senha:");
 					if(aux.getSenha().equals(senha)) {
 						Opcoes(e,cliente_dao,vinho_dao);
 					}
@@ -50,6 +50,7 @@ public class Main {
 			if (e instanceof Pessoa_Juridica) {
 				Pessoa_Juridica aux = (Pessoa_Juridica) e;
 				if(aux.getCnpj().equals(cpf_cnpj)){
+					String senha = JOptionPane.showInputDialog("Senha:");
 					if(aux.getSenha().equals(senha)) {
 						Opcoes(e,cliente_dao,vinho_dao);
 					}
@@ -57,11 +58,19 @@ public class Main {
 			}
 			
 		}
+		JOptionPane.showMessageDialog(null,"Ainda não cadastro para este cpf/cnpj.");
 		Cadastro(cliente_dao,vinho_dao);
 	}
 	
 	public static void Cadastro(ClienteDAO cliente_dao,VinhoDAO vinho_dao) {
-		String cpf_cnpj = JOptionPane.showInputDialog("CPF/CNPJ"); //validação do cpf
+		String cpf_cnpj = JOptionPane.showInputDialog("CPF/CNPJ");
+		ArrayList <String> lista = cliente_dao.listarCpf();
+		for(String e: lista) {
+			if(e.equals(cpf_cnpj)) {
+				JOptionPane.showMessageDialog(null,"Este cpf/cnpj já esta cadastrado");
+				Login(cliente_dao,vinho_dao);
+			}
+		}
 		String nome = JOptionPane.showInputDialog("Nome:");
 		String email = JOptionPane.showInputDialog("Email:");
 		String senha = JOptionPane.showInputDialog("Senha:");
@@ -97,7 +106,7 @@ public class Main {
 		String produto = JOptionPane.showInputDialog("Produto");
 		String casta =  JOptionPane.showInputDialog("Casta");
 		int safra =  Integer.parseInt(JOptionPane.showInputDialog("Safra"));
-		int pontuacao =  Integer.parseInt(JOptionPane.showInputDialog("Pontuação"));
+		float pontuacao =  Float.parseFloat(JOptionPane.showInputDialog("Pontuação"));
 		int id = vinho_dao.listar().size()+1000;
 		String cpf_cnpj;
 		if(cliente instanceof Pessoa_Juridica) {

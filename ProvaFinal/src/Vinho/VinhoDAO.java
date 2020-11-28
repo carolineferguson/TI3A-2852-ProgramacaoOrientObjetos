@@ -26,7 +26,7 @@ import Conexao.Conexao;
 			  ps.setString(3,vinho.getProduto());
 			  ps.setString(4,vinho.getCasta());
 			  ps.setInt(5,vinho.getSafra());
-			  ps.setInt(6,vinho.getPontuacao());
+			  ps.setFloat(6,vinho.getPontuacao());
 			  ps.execute();
 		  }
 		  catch(SQLException e){
@@ -42,7 +42,7 @@ import Conexao.Conexao;
 			  ps = connection.prepareStatement(sql);
 			  rs = ps.executeQuery();
 			  while(rs.next()) {
-				  lista.add(new Vinho(rs.getInt("id"),rs.getString("cpf_cnpj"),rs.getString("produto"),rs.getString("casta"),rs.getInt("safra"),rs.getInt("pontuacao")));
+				  lista.add(new Vinho(rs.getInt("id"),rs.getString("cpf_cnpj"),rs.getString("produto"),rs.getString("casta"),rs.getInt("safra"),rs.getFloat("pontuacao")));
 			  }
 		  }
 		  catch(SQLException e) {
@@ -59,7 +59,7 @@ import Conexao.Conexao;
 			  ps = connection.prepareStatement(sql);
 			  rs = ps.executeQuery();
 			  while(rs.next()) {
-				  lista.add(new Vinho(rs.getInt("id"),rs.getString("cpf_cnpj"),rs.getString("produto"),rs.getString("casta"),rs.getInt("safra"),rs.getInt("pontuacao")));
+				  lista.add(new Vinho(rs.getInt("id"),rs.getString("cpf_cnpj"),rs.getString("produto"),rs.getString("casta"),rs.getInt("safra"),rs.getFloat("pontuacao")));
 			  }
 		  }
 		  catch(SQLException e) {
